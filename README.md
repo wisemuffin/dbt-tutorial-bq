@@ -7,6 +7,15 @@ Try running the following commands:
 - dbt run
 - dbt test
 
+### metriql
+
+```bash
+docker run -it -p "${METRIQL_PORT}:5656" -v "${DBT_PROJECT_DIR}:/root/app" -v "${DBT_PROFILES_DIR}:/root/.dbt" -v "${HOME}/.config/gcloud:/root/.config/gcloud/" -e METRIQL_RUN_HOST=0.0.0.0 -e DBT_PROJECT_DIR="/root/app" buremba/metriql \
+ serve --manifest-json "/root/app/target/manifest.json"
+ ```
+
+when using the docker command above
+ connecting via trino required username = 'YOUR_METRIQL_USERNAME'
 
 ### CICD slim TODO
 

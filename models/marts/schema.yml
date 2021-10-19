@@ -1,0 +1,32 @@
+version: 2
+
+models:
+ - name: fct_orders
+   meta:
+    metriql:
+      measures:
+        total_rows:
+          aggregation: count
+        amount_over_cust_id_ratio:
+          sql: "{TABLE}.amount / {TABLE}.customer_id"
+          report:
+            format_numbers: 0.0%
+   columns:
+     - name: amount
+       description: total payment amount for an order
+     - name: customer_id
+ - name: dim_customers
+   meta:
+      metriql:
+         measures:
+            total_rows:
+               aggregation: count
+   columns:
+     - name: first_name
+       meta:
+         metriql.dimension:
+           type: string
+     - name: last_name
+       meta:
+         metriql.dimension:
+           type: string

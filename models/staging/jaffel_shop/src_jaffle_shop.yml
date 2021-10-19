@@ -6,6 +6,11 @@ sources:
     database: dbt-tutorial
     tables:
       - name: customers
+        meta:
+          metriql:
+            measures:
+                total_rows:
+                  aggregation: count
         description: Raw customers data.
         columns:
           - name: id
